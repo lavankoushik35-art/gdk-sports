@@ -136,6 +136,7 @@ nav ul li a{
     
     <input id="age" type="number" placeholder="Age" style="width:100%;padding:
       <script>
+      <script>
 function submitForm(e){
   e.preventDefault();
 
@@ -145,24 +146,13 @@ function submitForm(e){
   let id = document.getElementById("id").value;
   let game = document.getElementById("game").value;
 
-  // Validation
   if(name === "" || age === "" || team === ""){
     alert("⚠️ Please fill all fields!");
     return;
   }
 
-  // Show confirmation popup
-  alert(
-    "🏆 REGISTRATION SUCCESS\n\n" +
-    "Name: " + name + "\n" +
-    "ID: " + id + "\n" +
-    "Doubts: 9381687402\n" +
-    "Time: 4:00 PM"
-  );
-
-  // WhatsApp message to admin
   let message =
-`🏆 NEW REGISTRATION RECEIVED
+`🏆 GDK SPORTS REGISTRATION
 
 Name: ${name}
 Age: ${age}
@@ -172,12 +162,13 @@ Game: ${game}
 
 📞 Doubts: 9381687402
 ⏰ Time: 4:00 PM
-✔ Status: AGREED`;
+✔ AGREED`;
 
-  let adminNumber = "919381687402";
+  let admin = "919381687402";
 
-  let url = "https://wa.me/" + adminNumber + "?text=" + encodeURIComponent(message);
+  let url = "https://wa.me/" + admin + "?text=" + encodeURIComponent(message);
 
-  window.open(url, "_blank");
+  // IMPORTANT: use location.href (more reliable than window.open)
+  window.location.href = url;
 }
-  </script>
+</script>

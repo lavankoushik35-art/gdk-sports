@@ -1,1 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDK Sports Tournament</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f9;
+}
+
+/* NAVBAR */
+nav{
+  background:#0d0d0d;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+}
+
+nav h1{
+  font-size:22px;
+  color:gold;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:20px;
+}
+
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+nav ul li a:hover{
+  color:gold;
+}
+
+/* HERO */
+.hero{
+  height:90vh;
+  background:
+  linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d') center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+
+.hero h2{
+  font-size:55px;
+  margin:0;
+}
+
+.hero p{
+  font-size:20px;
+  margin-top:10px;
+}
+
+.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  background:gold;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* SECTIONS */
+section{
+  padding:60px 20px;
+  text-align:center;
+}
+
+h2{
+  font-size:30px;
+}
+
+/* CARDS */
+.cards{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  width:220px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* FORM */
+form{
+  max-width:450px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+input, select{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:green;
+  color:white;
+  border:none;
+  border-radius:5px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  background:#0d0d0d;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h2{
+    font-size:32px;
+  }
+
+  nav ul{
+    flex-direction:column;
+    background:#000;
+    position:absolute;
+    top:60px;
+    right:0;
+    width:200px;
+    display:none;
+    padding:10px;
+  }
+
+  nav ul.show{
+    display:flex;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h1>🏆 GDK SPORTS</h1>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#games">Games</a></li>
+    <li><a href="#register">Register</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <h2>SPORTS TOURNAMENT</h2>
+  <p>Cricket • Kabaddi • Championship 🏆</p>
+  <button class="btn" onclick="document.getElementById('register').scrollIntoView()">
+    Register Now
+  </button>
+</section>
+
+<!-- GAMES -->
+<section id="games">
+  <h2>Games</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Cricket</h3>
+      <p>Tennis ball knockout matches</p>
+    </div>
+
+    <div class="card">
+      <h3>Kabaddi</h3>
+      <p>Team vs team competition</p>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register">
+  <h2>Registration</h2>
+
+  <form onsubmit="submitForm(event)">
+    <input id="team" placeholder="Team Name">
+    <input id="captain" placeholder="Captain Name">
+    <input id="phone" placeholder="Phone Number">
+
+    <select>
+      <option>Cricket</option>
+      <option>Kabaddi</option>
+    </select>
+
+    <button type="submit">Register Now</button>
 

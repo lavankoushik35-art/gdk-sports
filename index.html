@@ -270,4 +270,67 @@ fetch(...)
 style="padding:15px 25px;background:#25D366;color:white;border:none;border-radius:8px;">
 📲 Register on WhatsApp
 </button>
-  
+  <script>
+function openWhatsApp(){
+
+  let name = prompt("Enter Name:");
+  let age = prompt("Enter Age:");
+  let team = prompt("Enter Team:");
+
+  if(!name || !age || !team){
+    alert("Please fill all details!");
+    return;
+  }
+
+  let message =
+`🏆 GDK SPORTS REGISTRATION
+
+Name: ${name}
+Age: ${age}
+Team: ${team}
+
+ID: 112233
+Status: AGREED`;
+
+  let admin = "919381687402";
+
+  // Open WhatsApp first
+  window.location.href =
+  "https://wa.me/" + admin + "?text=" + encodeURIComponent(message);
+
+  // AFTER sending → show profile screen
+  setTimeout(function(){
+
+    document.getElementById("profile").style.display = "block";
+
+    document.getElementById("p_name").innerText = name;
+    document.getElementById("p_age").innerText = age;
+    document.getElementById("p_team").innerText = team;
+
+    window.scrollTo(0, document.body.scrollHeight);
+
+  }, 3000);
+
+}
+</script>
+    <div id="profile" style="
+display:none;
+text-align:center;
+padding:40px;
+background:#111;
+color:white;
+">
+
+  <h2>🏆 Player Profile</h2>
+
+  <p><b>Name:</b> <span id="p_name"></span></p>
+  <p><b>Age:</b> <span id="p_age"></span></p>
+  <p><b>Team:</b> <span id="p_team"></span></p>
+
+  <hr style="margin:20px 0;">
+
+  <h3>📅 Match Details</h3>
+  <p>Match Date: <b>10 July 2026</b></p>
+  <p>Time: <b>4:00 PM</b></p>
+
+    </div>

@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -172,3 +172,100 @@ Game: ${game}
   window.location.href = url;
 }
 </script>
+<div style="text-align:center;margin-top:30px;">
+
+  <h2>🏆 Register Instantly</h2>
+  <p>Click below to send your details on WhatsApp</p>
+
+  <button onclick="openWhatsApp()" style="
+    padding:15px 25px;
+    background:#25D366;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+  ">
+    📲 Register on WhatsApp
+  </button>
+
+</div>
+<script>
+function openWhatsApp(){
+
+  let name = prompt("Enter your Name:");
+  let age = prompt("Enter your Age:");
+  let team = prompt("Enter your Team Name:");
+
+  if(!name || !age || !team){
+    alert("⚠️ Please fill all details!");
+    return;
+  }
+
+  let message =
+`🏆 GDK SPORTS REGISTRATION
+
+Name: ${name}
+Age: ${age}
+Team: ${team}
+
+ID: 112233
+Doubts: 9381687402
+Time: 4:00 PM
+Status: AGREED`;
+
+  let admin = "919381687402";
+
+  let url = "https://wa.me/" + admin + "?text=" + encodeURIComponent(message);
+
+  window.location.href = url;
+}
+</script>
+<section id="live" style="padding:60px;text-align:center;">
+  <h2>🔴 Live Tournament Updates</h2>
+
+  <div id="matchBox" style="
+    max-width:500px;
+    margin:auto;
+    background:#111;
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(255,0,0,0.3);
+  ">
+    Loading live match...
+  </div>
+</section>
+<script>
+async function loadLiveMatch(){
+
+  // You will replace this link later (Google Sheet JSON link)
+  let response = await fetch("https://api.jsonbin.io/v3/b/REPLACE_ID");
+
+  let data = await response.json();
+
+  let match = data.record;
+
+  document.getElementById("matchBox").innerHTML =
+  `
+  🏏 ${match.team1} vs ${match.team2}<br><br>
+  🔴 Score: <b>${match.score1} - ${match.score2}</b><br>
+  📍 Overs: ${match.overs}<br>
+  🏆 Status: ${match.status}
+  `;
+}
+
+// refresh every 10 seconds
+setInterval(loadLiveMatch, 10000);
+loadLiveMatch();
+</script>
+    {
+  "team1": "Lions",
+  "team2": "Tigers",
+  "score1": "120/3",
+  "score2": "110/5",
+  "overs": "12.4",
+  "status": "LIVE"
+}
+  

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,6 @@
 <title>GDK Sports Tournament</title>
 
 <style>
-/* RESET */
 *{
   margin:0;
   padding:0;
@@ -15,14 +14,13 @@
 }
 
 body{
-  background:#f5f7fb;
-  color:#222;
+  background:#0f0f1a;
+  color:white;
 }
 
-/* NAV */
+/* NAVBAR */
 nav{
   background:#0b0b0b;
-  color:white;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -34,23 +32,17 @@ nav{
 
 nav h1{
   color:gold;
-  font-size:22px;
 }
 
 nav ul{
-  display:flex;
-  gap:18px;
   list-style:none;
+  display:flex;
+  gap:15px;
 }
 
 nav ul li a{
   color:white;
   text-decoration:none;
-  font-weight:bold;
-}
-
-nav ul li a:hover{
-  color:gold;
 }
 
 /* HERO */
@@ -64,18 +56,16 @@ nav ul li a:hover{
   justify-content:center;
   align-items:center;
   text-align:center;
-  color:white;
-  padding:20px;
 }
 
 .hero h2{
   font-size:55px;
+  text-shadow:0 0 10px gold;
 }
 
 .hero p{
-  font-size:18px;
   margin-top:10px;
-  opacity:0.9;
+  font-size:18px;
 }
 
 .btn{
@@ -83,85 +73,111 @@ nav ul li a:hover{
   padding:12px 25px;
   background:gold;
   border:none;
+  cursor:pointer;
+  font-weight:bold;
   border-radius:6px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
 }
+</style>
+</head>
 
-.btn:hover{
-  transform:scale(1.05);
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/861/861512.png" width="35">
+    <h1>GDK SPORTS</h1>
+  </div>
+
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#games">Games</a></li>
+    <li><a href="#register">Register</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <h2>SPORTS TOURNAMENT</h2>
+  <p>Cricket • Kabaddi • Trophy Only 🏆</p>
+
+  <button class="btn" onclick="document.getElementById('register').scrollIntoView()">
+    Register Now
+  </button>
+</section>
+<!-- GAMES SECTION -->
+<section id="games" style="padding:60px;text-align:center;">
+  <h2 style="font-size:32px;margin-bottom:20px;">🏏 Games</h2>
+
+  <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+
+    <div style="background:#1e1e2f;padding:20px;width:220px;border-radius:15px;">
+      <h3>🏏 Cricket</h3>
+      <p>Tennis ball knockout tournament</p>
+    </div>
+
+    <div style="background:#1e1e2f;padding:20px;width:220px;border-radius:15px;">
+      <h3>🤼 Kabaddi</h3>
+      <p>Team vs team competition</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- REGISTER SECTION -->
+<section id="register" style="padding:60px;text-align:center;">
+
+  <h2>🏆 Registration</h2>
+  <p>Join GDK Sports Tournament</p>
+
+  <form onsubmit="submitForm(event)" style="max-width:450px;margin:auto;margin-top:20px;">
+
+    <input id="name" placeholder="Full Name" style="width:100%;padding:12px;margin:10px 0;">
+    
+    <input id="age" type="number" placeholder="Age" style="width:100%;padding:
+      <script>
+function submitForm(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let age = document.getElementById("age").value;
+  let team = document.getElementById("team").value;
+  let id = document.getElementById("id").value;
+  let game = document.getElementById("game").value;
+
+  // Validation
+  if(name === "" || age === "" || team === ""){
+    alert("⚠️ Please fill all fields!");
+    return;
+  }
+
+  // Show confirmation popup
+  alert(
+    "🏆 REGISTRATION SUCCESS\n\n" +
+    "Name: " + name + "\n" +
+    "ID: " + id + "\n" +
+    "Doubts: 9381687402\n" +
+    "Time: 4:00 PM"
+  );
+
+  // WhatsApp message to admin
+  let message =
+`🏆 NEW REGISTRATION RECEIVED
+
+Name: ${name}
+Age: ${age}
+Team: ${team}
+ID: ${id}
+Game: ${game}
+
+📞 Doubts: 9381687402
+⏰ Time: 4:00 PM
+✔ Status: AGREED`;
+
+  let adminNumber = "919381687402";
+
+  let url = "https://wa.me/" + adminNumber + "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
 }
-
-/* SECTION */
-section{
-  padding:70px 20px;
-  text-align:center;
-}
-
-h2{
-  font-size:32px;
-  margin-bottom:20px;
-}
-
-/* CARDS */
-.cards{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:20px;
-}
-
-.card{
-  background:white;
-  padding:25px;
-  width:220px;
-  border-radius:15px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.08);
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-}
-
-/* FORM */
-form{
-  max-width:450px;
-  margin:auto;
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.08);
-}
-
-input,select{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:1px solid #ddd;
-  border-radius:8px;
-}
-
-button{
-  width:100%;
-  padding:12px;
-  background:#0b8f3a;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-button:hover{
-  background:#0a7a31;
-}
-
-/* FOOTER */
-footer{
-  background:#0b0b0b;
-  color:white;
-  text-align:center;
-  padding:20px;
-  margin-top:30
+  </script>
